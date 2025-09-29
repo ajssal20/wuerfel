@@ -63,62 +63,27 @@
   });
 </script>
 
-<div class="screen">
-  <h1>🎲 Shake to Roll!</h1>
+<div class="min-h-screen bg-gradient-to-br from-indigo-600 to-purple-600 flex flex-col items-center justify-center p-5 text-white text-center">
+  <h1 class="text-3xl font-bold mb-10">🎲 Shake to Roll!</h1>
   
-  <div class="dice {isRolling ? 'shake' : ''}">
+  <div class="w-24 h-24 bg-white rounded-xl flex items-center justify-center text-4xl font-bold text-gray-800 shadow-2xl mb-10 {isRolling ? 'animate-shake' : ''}">
     {diceValue}
   </div>
 
-  <button on:click={rollDice} class="btn">
-    {isRolling ? 'Rolling...' : 'Tap to Roll'}
-  </button>
+  <div class="flex flex-col gap-3">
+    <button on:click={rollDice} class="bg-white text-indigo-600 border-none px-6 py-3 text-lg rounded-2xl cursor-pointer font-bold shadow-lg hover:bg-gray-100 transition-colors">
+      {isRolling ? 'Rolling...' : 'Tap to Roll'}
+    </button>
 
-  <button on:click={startShake} id="enableBtn" class="btn enable">
-    Enable Shake
-  </button>
+    <button on:click={startShake} id="enableBtn" class="bg-yellow-400 text-black border-none px-6 py-3 text-lg rounded-2xl cursor-pointer font-bold shadow-lg hover:bg-yellow-300 transition-colors">
+      Enable Shake
+    </button>
+  </div>
 
-  <p class="tip">Shake your phone to roll the dice</p>
+  <p class="mt-8 opacity-80 text-lg">Shake your phone to roll the dice</p>
 </div>
 
 <style>
-  .screen {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: #4f46e5;
-    color: white;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-  }
-
-  .dice {
-    width: 100px;
-    height: 100px;
-    background: white;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 40px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  }
-
-  .shake {
-    animation: shake 0.5s;
-  }
-
   @keyframes shake {
     0% { transform: rotate(0deg); }
     25% { transform: rotate(-10deg); }
@@ -126,26 +91,8 @@
     75% { transform: rotate(-10deg); }
     100% { transform: rotate(0deg); }
   }
-
-  .btn {
-    background: white;
-    color: #4f46e5;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1.1rem;
-    border-radius: 20px;
-    cursor: pointer;
-    margin: 5px;
-    font-weight: bold;
-  }
-
-  .enable {
-    background: #ffd700;
-    color: #000;
-  }
-
-  .tip {
-    margin-top: 30px;
-    opacity: 0.8;
+  
+  .animate-shake {
+    animation: shake 0.5s ease-in-out;
   }
 </style>
